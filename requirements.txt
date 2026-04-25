@@ -1,0 +1,5 @@
+numpy>=1.24
+opencv-python-headless>=4.8
+pupil-apriltags>=1.0
+pymavlink>=2.4
+PyYAML>=6.0

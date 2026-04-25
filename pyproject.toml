@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "strider-precision-landing"
+version = "0.1.0"
+description = "Raspberry Pi companion code for ArduPilot precision landing with AprilTags."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy>=1.24",
+  "opencv-python-headless>=4.8",
+  "pupil-apriltags>=1.0",
+  "pymavlink>=2.4",
+  "PyYAML>=6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=7.4",
+]
+
+[project.scripts]
+strider-land = "strider_landing.main:main"
+
+[tool.setuptools.packages.find]
+include = ["strider_landing*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

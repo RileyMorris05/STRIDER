@@ -1,0 +1,50 @@
+# STRIDER precision landing defaults.
+#
+# The landing target PDF is `april16h5-landing-a1.pdf`, printed physically on A1.
+# Before flight, measure the outer black square of the AprilTag you will detect and
+# put that measured value below. The placeholder is intentionally conservative.
+
+camera:
+  device: 0
+  width: 640
+  height: 480
+  fps: 30
+  # Optional calibration values. Leave null for bench angle tests, but calibrate
+  # before precision flight.
+  fx: null
+  fy: null
+  cx: null
+  cy: null
+  distortion: null
+
+apriltag:
+  family: tag16h5
+  # The rendered A1 landing PDF detects as tag16h5 ID 19.
+  id: 19
+  # Measure the printed outer black tag square on your A1 sheet.
+  size_m: 0.25
+  decision_margin_min: 20.0
+
+mavlink:
+  device: /dev/ttyACM0
+  baud: 115200
+  source_system: 42
+  source_component: 191
+  target_num: 0
+  send_rate_hz: 20
+
+mount:
+  # Positive yaw rotates camera/image-derived offsets clockwise into the aircraft
+  # forward/right convention.
+  yaw_deg: 0.0
+  flip_x: false
+  flip_y: false
+
+landing_target:
+  # ArduPilot expects MAV_FRAME_BODY_FRD for MAVLink precision landing.
+  frame: MAV_FRAME_BODY_FRD
+  position_valid: false
+
+runtime:
+  log_every_s: 1.0
+  lost_target_timeout_s: 0.25
